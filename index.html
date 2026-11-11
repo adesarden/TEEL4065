@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -162,7 +161,7 @@
         type="text"
         id="chartTitle"
         class="titulo-input"
-        value="Título de la Gráfica"
+        value="Título de Gráfica"
         oninput="actualizarGrafica()"
     >
 
@@ -174,7 +173,7 @@
             <input
                 type="text"
                 id="nombreX"
-                value="X"
+                value="X Label"
                 oninput="actualizarGrafica()"
             >
         </label>
@@ -184,7 +183,7 @@
             <input
                 type="text"
                 id="nombreEjeY"
-                value="Y"
+                value="Y Label"
                 oninput="actualizarGrafica()"
             >
         </label>
@@ -283,8 +282,8 @@
 
     // Colores de las tres series
     const colores = {
-        Y: "#1976D2",
-        Z: "#E53935",
+        Y: "#E53935",
+        Z: "#1976D2",
         W: "#2E7D32"
     };
 
@@ -303,17 +302,17 @@
             </td>
 
             <td>
-                <input type="number" step="any"
+                <input type="number" step="0.1"
                        id="y${i}" oninput="actualizarGrafica()">
             </td>
 
             <td>
-                <input type="number" step="any"
+                <input type="number" step="0.1"
                        id="z${i}" oninput="actualizarGrafica()">
             </td>
 
             <td>
-                <input type="number" step="any"
+                <input type="number" step="0.1"
                        id="w${i}" oninput="actualizarGrafica()">
             </td>
         `;
@@ -337,7 +336,7 @@
                     data: [],
                     borderColor: colores.Y,
                     backgroundColor: colores.Y,
-                    pointRadius: 5,
+                    pointRadius: 3,
                     pointHoverRadius: 7,
                     borderWidth: 2,
                     tension: 0.4,
@@ -350,7 +349,7 @@
                     data: [],
                     borderColor: colores.Z,
                     backgroundColor: colores.Z,
-                    pointRadius: 5,
+                    pointRadius: 3,
                     pointHoverRadius: 7,
                     borderWidth: 2,
                     tension: 0.4,
@@ -363,7 +362,7 @@
                     data: [],
                     borderColor: colores.W,
                     backgroundColor: colores.W,
-                    pointRadius: 5,
+                    pointRadius: 3,
                     pointHoverRadius: 7,
                     borderWidth: 2,
                     tension: 0.4,
@@ -380,42 +379,13 @@
 
             plugins: {
 
-                title: {
-                    display: true,
-                    text: "Título de la Gráfica",
-                    font: {
-                        size: 18
-                    }
-                },
-
-                legend: {
-                    display: false
-                }
-            },
+                title: {display: true,  text: "Gráfica de Flujo", font: { size: 18  } }, legend: { display: false } },
 
             scales: {
 
-                x: {
-                    type: "linear",
-                    min: 0,
-                    max: 8,
+                x: {type: "linear", min: 0, max: 8, title: {display: true, text:      "X Label"      , font: { size: 15  } }, ticks: {font: {size: 15}, stepSize: 0.5 } },
 
-                    title: {
-                        display: true,
-                        text: "X"
-                    },
-
-                    ticks: {
-                        stepSize: 1
-                    }
-                },
-
-                y: {
-                    title: {
-                        display: true,
-                        text: "Y"
-                    }
-                }
+                y: {                                title: {display: true,text: "Y Label", font: { size: 15  } }, ticks: {font: {size: 15}, stepSize: 0.5 } }
 
             }
         }
